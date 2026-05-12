@@ -32,12 +32,12 @@
 
 **⚠️ CRÍTICO**: Nenhuma tarefa de user story pode começar até que esta fase esteja completa
 
-- [ ] T003 Configurar porta 5151 em `backend/RSSFeedReader.Api/Properties/launchSettings.json` (substituir porta padrão, perfil `http` apenas)
-- [ ] T004 [P] Configurar porta 5213 em `frontend/RSSFeedReader.UI/Properties/launchSettings.json` (substituir porta padrão, perfil `http` apenas)
-- [ ] T005 Criar `frontend/RSSFeedReader.UI/wwwroot/appsettings.json` com `{ "ApiBaseUrl": "http://localhost:5151/api/" }`
-- [ ] T006 Configurar CORS em `backend/RSSFeedReader.Api/Program.cs`: policy `AllowBlazorFrontend` com `.WithOrigins("http://localhost:5213")` — sem wildcards
-- [ ] T007 Configurar `HttpClient` DI em `frontend/RSSFeedReader.UI/Program.cs`: ler `ApiBaseUrl` de `builder.Configuration["ApiBaseUrl"]` e registrar `HttpClient` com `BaseAddress`
-- [ ] T008 Limpar páginas de demonstração do template Blazor: remover `frontend/RSSFeedReader.UI/Pages/Home.razor`, `Counter.razor`, `Weather.razor` e limpar links de demonstração de `frontend/RSSFeedReader.UI/Layout/NavMenu.razor`
+- [x] T003 Configurar porta 5151 em `backend/RSSFeedReader.Api/Properties/launchSettings.json` (substituir porta padrão, perfil `http` apenas)
+- [x] T004 [P] Configurar porta 5213 em `frontend/RSSFeedReader.UI/Properties/launchSettings.json` (substituir porta padrão, perfil `http` apenas)
+- [x] T005 Criar `frontend/RSSFeedReader.UI/wwwroot/appsettings.json` com `{ "ApiBaseUrl": "http://localhost:5151/api/" }`
+- [x] T006 Configurar CORS em `backend/RSSFeedReader.Api/Program.cs`: policy `AllowBlazorFrontend` com `.WithOrigins("http://localhost:5213")` — sem wildcards
+- [x] T007 Configurar `HttpClient` DI em `frontend/RSSFeedReader.UI/Program.cs`: ler `ApiBaseUrl` de `builder.Configuration["ApiBaseUrl"]` e registrar `HttpClient` com `BaseAddress`
+- [x] T008 Limpar páginas de demonstração do template Blazor: remover `frontend/RSSFeedReader.UI/Pages/Home.razor`, `Counter.razor`, `Weather.razor` e limpar links de demonstração de `frontend/RSSFeedReader.UI/Layout/NavMenu.razor`
 
 **Checkpoint**: Backend roda em `http://localhost:5151`, frontend em `http://localhost:5213`; frontend consegue fazer requests ao backend sem erros de CORS
 
