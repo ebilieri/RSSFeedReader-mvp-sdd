@@ -19,6 +19,20 @@
     <p style="color: green;">@successMessage</p>
 }
 
+@if (subscriptions.Count == 0)
+{
+    <p>Nenhuma assinatura adicionada ainda.</p>
+}
+else
+{
+    <ul>
+        @foreach (var item in subscriptions)
+        {
+            <li>@item.Url</li>
+        }
+    </ul>
+}
+
 @code {
     private string newUrl = string.Empty;
     private List<SubscriptionItemDto> subscriptions = [];

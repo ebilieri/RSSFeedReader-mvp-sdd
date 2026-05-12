@@ -76,8 +76,8 @@
 
 ### Implementation for User Story 2
 
-- [ ] T021 [US2] Adicionar estado vazio em `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor`: renderizar mensagem de estado vazio (ex.: "Nenhuma assinatura adicionada ainda.") quando `subscriptions` estiver vazia — sem erros visuais (SC-005)
-- [ ] T022 [US2] Verificar e ajustar renderização da lista em `Subscriptions.razor`: cada item exibe apenas `item.Url` como texto puro, sem número sequencial, ícone ou elementos adicionais (clarification 3 do spec.md)
+- [x] T021 [US2] Adicionar estado vazio em `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor`: renderizar mensagem de estado vazio (ex.: "Nenhuma assinatura adicionada ainda.") quando `subscriptions` estiver vazia — sem erros visuais (SC-005)
+- [x] T022 [US2] Verificar e ajustar renderização da lista em `Subscriptions.razor`: cada item exibe apenas `item.Url` como texto puro, sem número sequencial, ícone ou elementos adicionais (clarification 3 do spec.md)
 
 **Checkpoint**: US1 + US2 funcionam de forma independente. Estado vazio, lista populada e order de inserção todos verificáveis.
 
@@ -87,8 +87,8 @@
 
 **Purpose**: Melhorias que afetam toda a aplicação
 
-- [ ] T023 [P] Atualizar `frontend/RSSFeedReader.UI/Layout/NavMenu.razor`: garantir que apenas o link para a página de Assinaturas (`/`) está presente; remover quaisquer links de template remanescentes
-- [ ] T024 Executar validação do quickstart.md: iniciar backend (`cd backend/RSSFeedReader.Api && dotnet run`), iniciar frontend (`cd frontend/RSSFeedReader.UI && dotnet run`), abrir `http://localhost:5213`, verificar todos os cenários de aceitação do spec.md (US1 + US2)
+- [x] T023 [P] Atualizar `frontend/RSSFeedReader.UI/Layout/NavMenu.razor`: garantir que apenas o link para a página de Assinaturas (`/`) está presente; remover quaisquer links de template remanescentes
+- [x] T024 Executar validação do quickstart.md: iniciar backend (`cd backend/RSSFeedReader.Api && dotnet run`), iniciar frontend (`cd frontend/RSSFeedReader.UI && dotnet run`), abrir `http://localhost:5213`, verificar todos os cenários de aceitação do spec.md (US1 + US2)
 
 **Checkpoint final**: Aplicativo completo e funcional conforme [quickstart.md](quickstart.md)
 
