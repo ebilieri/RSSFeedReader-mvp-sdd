@@ -1,0 +1,71 @@
+@page "/"
+@inject SubscriptionApiService ApiService
+
+<h1>Minhas Assinaturas</h1>
+
+<div>
+    <label for="urlInput">URL do Feed</label>
+    <input id="urlInput" type="text" @bind="newUrl" />
+    <button disabled="@isLoading" @onclick="OnAddSubmit">Adicionar</button>
+</div>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <p style="color: red;">@errorMessage</p>
+}
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <p style="color: green;">@successMessage</p>
+}
+
+@code {
+    private string newUrl = string.Empty;
+    private List<SubscriptionItemDto> subscriptions = [];
+    private string successMessage = string.Empty;
+    private string errorMessage = string.Empty;
+    private bool isLoading = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            subscriptions = await ApiService.GetAllAsync();
+        }
+        catch (HttpRequestException)
+        {
+            errorMessage = "Não foi possível conectar ao servidor. Verifique se o backend está em execução.";
+            subscriptions = [];
+        }
+    }
+
+    private async Task OnAddSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(newUrl))
+        {
+            errorMessage = "Insira uma URL";
+            return;
+        }
+
+        isLoading = true;
+        errorMessage = string.Empty;
+
+        try
+        {
+            var item = await ApiService.AddAsync(newUrl);
+            if (item is not null)
+                subscriptions.Add(item);
+            newUrl = string.Empty;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+
+        successMessage = "Assinatura adicionada!";
+        StateHasChanged();
+        await Task.Delay(3000);
+        successMessage = string.Empty;
+        StateHasChanged();
+    }
+}

@@ -1,3 +1,5 @@
+using RSSFeedReader.Api.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
@@ -11,6 +13,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddControllers();
+builder.Services.AddSingleton<ISubscriptionService, InMemorySubscriptionService>();
 
 var app = builder.Build();
 
