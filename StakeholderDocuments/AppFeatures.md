@@ -1,85 +1,85 @@
 # App features
 
-This RSS feed reader demonstrates subscription management as the foundation for a feed reader application.
+Este leitor de RSS demonstra o gerenciamento de assinaturas como base para uma aplicação leitora de feeds.
 
 ## MVP scope (proof-of-concept version)
 
-The MVP demonstrates the minimal viable functionality: managing a subscription list.
+O MVP demonstra a funcionalidade mínima viável: gerenciar uma lista de assinaturas.
 
-For the MVP, the app MUST:
+Para o MVP, o aplicativo DEVE:
 
-- Let a user add a feed subscription by pasting a feed URL
-- Display the list of subscriptions in the UI
+- Permitir que o usuário adicione uma assinatura de feed colando uma URL
+- Exibir a lista de assinaturas na interface
 
-For the MVP, the app MAY:
+Para o MVP, o aplicativo PODE:
 
-- Store data only in memory (data is lost when the app closes)
-- Accept any URL without validation (assume valid RSS/Atom feed URLs)
-- Display subscriptions in a simple list format
+- Armazenar dados apenas em memória (os dados são perdidos quando o aplicativo fecha)
+- Aceitar qualquer URL sem validação (assume URLs válidas de feeds RSS/Atom)
+- Exibir assinaturas em formato de lista simples
 
 ## MVP behavior
 
-The MVP follows simple rules:
+O MVP segue regras simples:
 
-- Users can add subscriptions by entering a URL
-- The subscription list updates immediately when a subscription is added
-- No feed fetching, parsing, or validation
-- No error handling needed (no network operations)
+- Usuários podem adicionar assinaturas inserindo uma URL
+- A lista de assinaturas é atualizada imediatamente quando uma assinatura é adicionada
+- Sem busca, análise ou validação de feeds
+- Sem tratamento de erros necessário (sem operações de rede)
 
 ## Extended-MVP features
 
-After the basic MVP (subscription management) is working, the Extended-MVP adds feed fetching and display:
+Após o MVP básico (gerenciamento de assinaturas) estar funcionando, o Extended-MVP adiciona busca e exibição de feeds:
 
-- **Manual refresh**: Users can click "refresh" to fetch feed content
-- **Item display**: Show items with title and link
-- **Basic error handling**: Show "Failed to load feed" if something goes wrong
-- **No automatic polling**: Manual refresh only, no background updates
+- **Manual refresh**: Usuários podem clicar em "refresh" para buscar o conteúdo do feed
+- **Item display**: Exibir itens com título e link
+- **Basic error handling**: Mostrar "Failed to load feed" se algo der errado
+- **No automatic polling**: Apenas atualização manual, sem atualizações em segundo plano
 
 ## Post-MVP features
 
-After developing a successful Extended-MVP app, the following features could be considered for future versions:
+Após desenvolver um aplicativo Extended-MVP bem-sucedido, os seguintes recursos podem ser considerados para versões futuras:
 
 ### Essential improvements
 
-- **Persistence**: Store subscriptions and items in a database so they remain available after restarting the app
-- **Remove subscriptions**: Allow users to delete feeds
-- **Better item display**: Show item summaries/content, not just titles
-- **Newest-first sorting**: Display items in chronological order
+- **Persistence**: Armazenar assinaturas e itens em um banco de dados para que permaneçam disponíveis após reiniciar o aplicativo
+- **Remove subscriptions**: Permitir que usuários excluam feeds
+- **Better item display**: Exibir resumos/conteúdo dos itens, não apenas títulos
+- **Newest-first sorting**: Exibir itens em ordem cronológica
 
 ### Additional capabilities
 
-- **Background polling**: Automatically refresh feeds on a schedule
-- **Read/unread tracking**: Mark items as read and filter by read status
-- **Website-to-feed discovery**: Let users paste a website URL and automatically find its RSS feed
-- **Folders/organization**: Group feeds into categories
-- **Better error handling**: Show specific error messages (feed moved, access denied, malformed XML, etc.)
-- **De-duplication**: Ensure the same item isn't stored multiple times
-- **HTML rendering**: Safely display rich content from feeds
+- **Background polling**: Atualizar feeds automaticamente em um agendamento
+- **Read/unread tracking**: Marcar itens como lidos e filtrar por status de leitura
+- **Website-to-feed discovery**: Permitir que usuários colem uma URL de site e encontrem automaticamente seu feed RSS
+- **Folders/organization**: Agrupar feeds em categorias
+- **Better error handling**: Mostrar mensagens de erro específicas (feed movido, acesso negado, XML malformado, etc.)
+- **De-duplication**: Garantir que o mesmo item não seja armazenado várias vezes
+- **HTML rendering**: Exibir com segurança conteúdo rico dos feeds
 
 ### Practical notes for developers
 
 **For MVP (subscription management only):**
 
-- Use simple in-memory storage (List in C#)
-- No need for feed parsing libraries yet
-- No HTTP client needed for MVP
-- Focus on basic UI and state management
+- Usar armazenamento simples em memória (List em C#)
+- Sem necessidade de bibliotecas de análise de feed ainda
+- Sem cliente HTTP necessário para o MVP
+- Foco em interface básica e gerenciamento de estado
 
 **For Extended-MVP (add feed fetching):**
 
-- Use `System.ServiceModel.Syndication` for parsing
-- Test with known-good feeds (e.g., <https://devblogs.microsoft.com/dotnet/feed/>)
-- Avoid complex parsing edge cases - handle basic RSS/Atom formats only
+- Usar `System.ServiceModel.Syndication` para análise
+- Testar com feeds conhecidamente funcionais (ex.: <https://devblogs.microsoft.com/dotnet/feed/>)
+- Evitar casos complexos de análise - lidar apenas com formatos básicos de RSS/Atom
 
 ## Additional features (longer-term)
 
-If the app grows beyond a basic demonstration, these features could be considered:
+Se o aplicativo crescer além de uma demonstração básica, estes recursos podem ser considerados:
 
-- **Search and filtering**: Find items by keyword, filter by date or category
-- **OPML import/export**: Transfer subscriptions between feed readers
-- **Advanced organization**: Tags, saved items, priorities
-- **Multi-device sync**: Share subscriptions and read state across devices
-- **Notifications**: Alert on new items from important feeds
-- **Integrations**: Share to email, chat tools, or read-later services
-- **Offline reading**: Cache full article content for offline access
-- **Mobile apps**: Native apps for phones and tablets
+- **Search and filtering**: Encontrar itens por palavra-chave, filtrar por data ou categoria
+- **OPML import/export**: Transferir assinaturas entre leitores de feed
+- **Advanced organization**: Tags, itens salvos, prioridades
+- **Multi-device sync**: Compartilhar assinaturas e estado de leitura entre dispositivos
+- **Notifications**: Alertar sobre novos itens de feeds importantes
+- **Integrations**: Compartilhar por e-mail, ferramentas de chat ou serviços de leitura posterior
+- **Offline reading**: Armazenar em cache o conteúdo completo do artigo para leitura offline
+- **Mobile apps**: Aplicativos nativos para telefones e tablets
