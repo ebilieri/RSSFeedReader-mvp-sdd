@@ -56,7 +56,7 @@
 - [ ] T011 [US1] Criar `backend/RSSFeedReader.Api/Services/ISubscriptionService.cs` com métodos `IReadOnlyList<SubscriptionItem> GetAll()` e `SubscriptionItem Add(string url)`
 - [ ] T012 [US1] Criar `backend/RSSFeedReader.Api/Services/InMemorySubscriptionService.cs` implementando `ISubscriptionService` com `List<SubscriptionItem>` + lock de thread (conforme data-model.md)
 - [ ] T013 [US1] Registrar `InMemorySubscriptionService` como singleton em `backend/RSSFeedReader.Api/Program.cs`: `builder.Services.AddSingleton<ISubscriptionService, InMemorySubscriptionService>()`
-- [ ] T014 [US1] Criar `backend/RSSFeedReader.Api/Controllers/SubscriptionsController.cs` com `POST /api/subscriptions` (retorna 201 + item criado; 400 se URL vazia) e `GET /api/subscriptions` (retorna 200 + array)
+- [ ] T014 [US1] Criar `backend/RSSFeedReader.Api/Controllers/SubscriptionsController.cs` com atributos `[ApiController]` e `[Route("api/[controller]")]` na classe, injetar `ISubscriptionService` via construtor — implementar `POST /api/subscriptions` (retorna `CreatedAtAction` 201 + item criado; 400 se URL vazia após trim via `[Required]`) e `GET /api/subscriptions` (retorna `Ok(service.GetAll())` 200 + array)
 - [ ] T015 [P] [US1] Criar `frontend/RSSFeedReader.UI/Models/SubscriptionItemDto.cs` com `public string Url { get; set; } = string.Empty`
 - [ ] T016 [US1] Criar `frontend/RSSFeedReader.UI/Services/SubscriptionApiService.cs` com `AddAsync(string url)` (POST) e `GetAllAsync()` (GET) usando `HttpClient` injetado
 - [ ] T017 [US1] Registrar `SubscriptionApiService` em `frontend/RSSFeedReader.UI/Program.cs`: `builder.Services.AddScoped<SubscriptionApiService>()`
