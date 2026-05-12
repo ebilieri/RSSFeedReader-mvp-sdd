@@ -59,7 +59,13 @@ com o backend (decisão de research: sem projeto shared no MVP).
 
 | Campo | Tipo | Notas |
 |-------|------|-------|
-| `url` | `string` | Camelcase (serialização JSON padrão do ASP.NET Core) |
+| `Url` | `string` | Propriedade C# PascalCase; desserializada do JSON camelCase (`"url"`) pelo padrão do ASP.NET Core |
+
+**Estratégia de serialização JSON**: O ASP.NET Core Web API usa `System.Text.Json` com
+`JsonNamingPolicy.CamelCase` por padrão — a propriedade C# `Url` (PascalCase) é serializada
+como `"url"` (camelCase) no JSON. O `System.Text.Json` no Blazor WASM usa a mesma política
+por padrão com `ReadFromJsonAsync<T>`, portanto a desserialização funciona sem configuração
+adicional. Nenhum atributo `[JsonPropertyName]` é necessário.
 
 ```csharp
 namespace RSSFeedReader.UI.Models;

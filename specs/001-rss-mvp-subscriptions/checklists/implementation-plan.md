@@ -23,7 +23,7 @@ implementação
 - [ ] CHK005 - Existe uma tarefa explícita para verificar que os dois projetos criados em T001/T002 compilam e executam com `dotnet run` antes de qualquer modificação? Ou este checkpoint é suficientemente claro no texto de Phase 1? [Clarity, tasks.md §Phase 1]
 - [ ] CHK006 - T014 (controller) especifica com clareza suficiente a anotação de rota (`[Route("api/[controller]")]`) e o atributo `[ApiController]`, ou isso fica implícito para o implementador? [Clarity, tasks.md §T014, Gap]
 - [ ] CHK007 - T008 (limpeza do template Blazor) especifica o estado final esperado de `NavMenu.razor` após a limpeza? O critério de "limpeza completa" está mensurável? [Clarity, tasks.md §T008, Gap]
-- [ ] CHK008 - A variável `isLoading` declarada em T018 tem seu uso de UI definido em alguma tarefa? (ex.: desabilitar botão durante request, mostrar indicador visual) Ou é declarada sem propósito especificado? [Completeness, tasks.md §T018, Gap]
+- [x] CHK008 - A variável `isLoading` declarada em T018 tem seu uso de UI definido em alguma tarefa? (ex.: desabilitar botão durante request, mostrar indicador visual) Ou é declarada sem propósito especificado? [Completeness, tasks.md §T018, Gap] ✅ Resolvido em T018: `isLoading = true` durante chamadas HTTP; botão `disabled` enquanto `isLoading == true`
 - [ ] CHK009 - Existe uma tarefa ou checkpoint que valide a conexão entre frontend e backend antes de iniciar as tarefas de User Story 1? O checkpoint de Phase 2 é mensurável? [Completeness, tasks.md §Phase 2 Checkpoint]
 - [ ] CHK010 - Existe uma tarefa para verificar que a leitura de `ApiBaseUrl` de `appsettings.json` falha graciosamente (ex.: fallback para URL padrão) se o arquivo não estiver presente, ou está assumido que o arquivo sempre existirá? [Coverage, tasks.md §T007, Gap]
 
@@ -32,7 +32,7 @@ implementação
 ## Clareza das Tarefas (especificidade suficiente para implementar)
 
 - [ ] CHK011 - T019 especifica os textos exatos das mensagens de feedback ("Assinatura adicionada!" e "Insira uma URL") ou deixa aberto para o implementador decidir? São rastreáveis a FR-007 e FR-008? [Clarity, tasks.md §T019, Spec §FR-007, FR-008]
-- [ ] CHK012 - T019 especifica quando `errorMessage` deve ser limpa? (ex.: ao usuário começar a digitar, na próxima submissão bem-sucedida, ou nunca até nova tentativa) [Clarity, tasks.md §T019, Gap]
+- [x] CHK012 - T019 especifica quando `errorMessage` deve ser limpa? (ex.: ao usuário começar a digitar, na próxima submissão bem-sucedida, ou nunca até nova tentativa) [Clarity, tasks.md §T019, Gap] ✅ Resolvido em T019: `errorMessage` é limpa no início de cada nova submissão (antes de chamar `AddAsync`)
 - [ ] CHK013 - T006 (CORS) especifica a posição correta do middleware em `Program.cs` (após `app.UseRouting()`, antes de `app.MapControllers()`), ou isso fica implícito? [Clarity, tasks.md §T006, research.md §Decisão 4]
 - [ ] CHK014 - T021 (empty state) especifica o texto exato da mensagem de estado vazio ("Nenhuma assinatura adicionada ainda." ou similar), ou o critério visual de "sem erros visuais" (SC-005) é suficientemente específico? [Clarity, tasks.md §T021, Spec §SC-005]
 
@@ -51,7 +51,7 @@ implementação
 - [ ] CHK018 - O comportamento de `GetAll()` quando a lista está vazia (retorna `[]` vs. retorna `null`) está explicitamente especificado em data-model.md? A distinção importa para o frontend (`@foreach` em null lançaria exceção)? [Completeness, data-model.md §ISubscriptionService]
 - [ ] CHK019 - A responsabilidade pelo `Trim()` da URL está claramente atribuída — é no método `Add()` do service (data-model.md) ou no controller antes de chamar o service? Existe ambiguidade entre data-model.md e contracts/api.md? [Clarity, data-model.md §InMemorySubscriptionService, contracts/api.md §POST]
 - [ ] CHK020 - O requisito de thread-safety de `InMemorySubscriptionService` (lock) está rastreável a algum requisito ou assumption no spec.md ou plan.md? Ou é uma decisão de design sem fonte documentada? [Traceability, data-model.md §Armazenamento, Gap]
-- [ ] CHK021 - A estratégia de serialização JSON (camelCase para o contrato REST) está documentada em data-model.md ou plan.md, de forma que o implementador saiba se precisa configurar `JsonSerializerOptions` ou se o padrão do ASP.NET Core já entrega isso? [Completeness, data-model.md §SubscriptionItemDto, Gap]
+- [x] CHK021 - A estratégia de serialização JSON (camelCase para o contrato REST) está documentada em data-model.md ou plan.md, de forma que o implementador saiba se precisa configurar `JsonSerializerOptions` ou se o padrão do ASP.NET Core já entrega isso? [Completeness, data-model.md §SubscriptionItemDto, Gap] ✅ Resolvido em data-model.md §SubscriptionItemDto: padrão camelCase do ASP.NET Core + `ReadFromJsonAsync<T>` documentados; nenhum `[JsonPropertyName]` necessário
 
 ---
 
@@ -74,7 +74,7 @@ implementação
 
 ## Cobertura de Casos de Borda
 
-- [ ] CHK029 - O comportamento do frontend quando o backend está inacessível no momento de `OnInitializedAsync` (T020) está especificado em algum artefato? O usuário verá erro silencioso, mensagem de erro, ou lista vazia? [Coverage, Edge Case, tasks.md §T020, Gap]
+- [x] CHK029 - O comportamento do frontend quando o backend está inacessível no momento de `OnInitializedAsync` (T020) está especificado em algum artefato? O usuário verá erro silencioso, mensagem de erro, ou lista vazia? [Coverage, Edge Case, tasks.md §T020, Gap] ✅ Resolvido em T020: capturar `HttpRequestException`, exibir `errorMessage` com instrução de verificar o backend, inicializar lista vazia (sem crash)
 - [ ] CHK030 - O comportamento do frontend quando o POST retorna 400 (validação de backend) está especificado em tasks.md ou contracts/api.md? O `SubscriptionApiService` precisa fazer parse do erro ou apenas propagar o status? [Coverage, Edge Case, tasks.md §T016, contracts/api.md §400]
 - [ ] CHK031 - O cenário de submissão múltipla rápida (double-click no botão "Adicionar") está endereçado? Existe requisito de debounce ou desabilitação do botão durante a chamada HTTP? [Coverage, Edge Case, Gap]
 
@@ -91,7 +91,7 @@ implementação
 ## Prontidão para Implementação
 
 - [ ] CHK035 - Após ler todos os artefatos do plano, um desenvolvedor consegue iniciar T001 imediatamente sem necessidade de informação adicional? Existem pré-condições implícitas não documentadas (ex.: versão específica do .NET CLI)? [Readiness, tasks.md §T001, quickstart.md §Pré-requisitos]
-- [ ] CHK036 - O título/cabeçalho esperado da página `Subscriptions.razor` está especificado em algum artefato? O texto do botão "Adicionar" e o label do campo "URL do Feed" estão definidos como requisitos ou ficam à discrição do implementador? [Completeness, Gap]
+- [x] CHK036 - O título/cabeçalho esperado da página `Subscriptions.razor` está especificado em algum artefato? O texto do botão "Adicionar" e o label do campo "URL do Feed" estão definidos como requisitos ou ficam à discrição do implementador? [Completeness, Gap] ✅ Resolvido em T018: heading `<h1>Minhas Assinaturas</h1>`; T019: label "URL do Feed", botão "Adicionar"
 
 ---
 
