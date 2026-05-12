@@ -31,7 +31,18 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Verificar conformidade com os princípios da constituição antes de prosseguir:
+
+- [ ] **I. MVP-First Development** — A feature pertence à fase correta (MVP / Extended-MVP / Post-MVP)?
+  Funcionalidades de fases futuras estão excluídas do escopo?
+- [ ] **II. Security by Design** — Entradas do usuário são validadas na camada de API?
+  CORS configurado com origens explícitas? Nenhum valor sensível hardcoded?
+- [ ] **III. Clean Architecture Separation** — Lógica de negócio está no backend?
+  Frontend limitado a UI e interação? Comunicação apenas por contratos REST?
+- [ ] **IV. Configuration Over Convention** — Portas, URLs e origens CORS definidas
+  em `launchSettings.json` e `appsettings.json`? Nenhum valor de ambiente no código-fonte?
+- [ ] **V. Simplicity and Maintainability** — Apenas o necessário para a fase atual foi implementado?
+  Nenhuma biblioteca externa não justificada adicionada?
 
 ## Project Structure
 
