@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{1AE8ACA6-933B-BF2A-3671-3E2EAC007D16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend", "frontend", "{CE609670-85B9-0D16-FB54-ED063D5D8A6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSSFeedReader.Api", "backend\RSSFeedReader.Api\RSSFeedReader.Api.csproj", "{3E0685F6-2A34-36E0-8F37-A42FBBDA65DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSSFeedReader.UI", "frontend\RSSFeedReader.UI\RSSFeedReader.UI.csproj", "{AA10EE51-5B62-9C8C-04DF-F6F6B839D63B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E0685F6-2A34-36E0-8F37-A42FBBDA65DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E0685F6-2A34-36E0-8F37-A42FBBDA65DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E0685F6-2A34-36E0-8F37-A42FBBDA65DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E0685F6-2A34-36E0-8F37-A42FBBDA65DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA10EE51-5B62-9C8C-04DF-F6F6B839D63B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA10EE51-5B62-9C8C-04DF-F6F6B839D63B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA10EE51-5B62-9C8C-04DF-F6F6B839D63B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA10EE51-5B62-9C8C-04DF-F6F6B839D63B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3E0685F6-2A34-36E0-8F37-A42FBBDA65DD} = {1AE8ACA6-933B-BF2A-3671-3E2EAC007D16}
+		{AA10EE51-5B62-9C8C-04DF-F6F6B839D63B} = {CE609670-85B9-0D16-FB54-ED063D5D8A6D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {962116DD-6780-423F-AEC6-606BE9B3B025}
+	EndGlobalSection
+EndGlobal

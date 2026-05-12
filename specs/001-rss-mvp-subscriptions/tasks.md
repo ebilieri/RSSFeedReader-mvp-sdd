@@ -19,8 +19,8 @@
 
 **Purpose**: Inicialização dos dois projetos .NET e estrutura de diretórios
 
-- [ ] T001 Criar projeto backend `backend/RSSFeedReader.Api` via `dotnet new webapi` em `backend/`
-- [ ] T002 Criar projeto frontend `frontend/RSSFeedReader.UI` via `dotnet new blazorwasm` em `frontend/`
+- [x] T001 Criar projeto backend `backend/RSSFeedReader.Api` via `dotnet new webapi` em `backend/`
+- [x] T002 Criar projeto frontend `frontend/RSSFeedReader.UI` via `dotnet new blazorwasm` em `frontend/`
 
 **Checkpoint**: Dois projetos criados e executáveis com `dotnet run` em seus respectivos diretórios
 
